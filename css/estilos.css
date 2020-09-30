@@ -1,0 +1,131 @@
+*{
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the logo */
+.logo {
+  background-color: #0B5345;
+  padding: 20px;
+  text-align: left;
+  color: white;
+  font-size: 20px;
+}
+
+/* Style the header */
+.header {
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+}
+.header h1{
+  font-size: 80px;
+}
+
+.header p{
+  font-size: 20px;
+  padding: 0 20%;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: white;
+  border-bottom: 2px solid #D35400;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #D35400;
+  color: white;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+/* Left column */
+.column.left {
+  width: 66.6%;
+}
+
+/* Right column */
+.column.right {
+  width: 33.3%;
+}
+
+/* Right column parrafs */
+.column.right p{
+  padding: 20px;
+  background-color: #117A65 ;
+  color: white;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*Clases para precio de libros*/
+.alineacionImg{
+  float: left; /*haremos que se vayan a la izquierda*/
+  width: 33.3%;
+  padding: 20px;
+}
+
+.alineacionImg img{
+  width: 100%;
+}
+
+/*Clases para la galería de ebooks*/
+.ebook{
+  float: left;
+  width: 33.3%;
+  padding: 20px;
+}
+
+.ebook img{
+  width: 100%;
+}
+
+.ebook:hover{
+    background-color: red;
+    color: white;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column.left, .column.right , .ebook{
+    width: 100%;
+  }
+/*Encabezado*/
+  .header p{
+    padding: 0;
+  }
+
+  /*Items del menú de navegación*/
+  .topnav a{
+    width: 100%;
+    font-size: 25px;
+  }
+
+}
+
