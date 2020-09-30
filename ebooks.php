@@ -21,13 +21,15 @@
    
   <div class="column left">
  	<div class="topnav">
-  		<a href="../index.html">Re-Read</a>
-  		<a href="libros.html">Libros</a>
-  		<a href="ebooks.html">eBooks</a>
+  		<a href="../index.php">Re-Read</a>
+  		<a href="libros.php">Libros</a>
+  		<a href="ebooks.php">eBooks</a>
 	</div>
     <h2>Toda la actualidad en eBook</h2>
-    
+  
   <!--Books con descripción-->
+  <!--
+
   <div class="ebook">    
       <img src="../img/ebook_1.jpeg" alt="ebook 1">
       <div>En Las tinieblas y el alba, Ken Follett embarca al lector en un épico viaje que termina donde Los pilares de la Tierra comienza.</div>
@@ -49,34 +51,61 @@
     <div>El poder de confiar en ti te invita a convertirte en tu propio coach y a ser tu propio guía con pautas y ejercicios para que aprendas a sentirte bien y a hacer realidad tus verdaderos deseos y aspiraciones.</div>
   </div>  
 </div>
-  <div class="column right">
-    <h2>Top ventas</h2>
-    <p>Cien años de soledad</p>
-    <p>Crónica de una muerte anunciada</p>
-    <p>El otoño del patriarca</p>
-    <p>El general en su laberinto</p>
-  </div>
-</div>
-</body>
-</html>
+-->
 
 <?php
-//1. Conexión con la base de datos
+// 1. Conexión con la base de datos.
 include '../services/connection.php';
 
-//2. Selección y muestra de datos de la base de datos
-$result = mysqli_query(conn), "SELECT Books.Description, Books.img, Books.Title";
+// 2. Selección y muestra de datos de la base de datos.
+$result = mysqli_query($conn, "SELECT Books.Description, Books.img, Books.Title FROM Books WHERE eBook != '0'");
 
-iff (!empty($result) && mysqli_num_rows($result) > 0) {
-// datos de salida de cada fila (fila=row)
-  while ($row = mysqli_fetch_array($result)) {
-    echo "<div class='gallery'>";
-    // Añadimos la imagen a la página con la etiqueta img de HTML
-    echo "<img src=../img/".$row['img']." alt='".$row['Title']."'>";
-    // Añadimos el título a la página con la etiqueta h2 de HTML
-    // echo "<div class='desc'".$row['Title']. </div>";
-    echo "</div>";
-  }
-} else {
+if(!empty($result)&& mysqli_num_rows($result) > 0) {
+    //datos de salida de cada fila (fila = row)
+    $i=0;
+    while ($row = mysqli_fetch_array($result)) {
+        $i++;
+        echo "<div class='ebook'>";
+        //Añadimos las imagenes a la pagina con la etiqueta img de HTML
+        echo "<img src=../img/".$row['img']." alt='".$row['Title']."'>";
+        //Añadimos el titulo a la pagina con la etiqueta h2 de HTML
+        echo "<div class='desc'>".$row['Description']." </div>";
+        echo "</div>";
+        if ($i%3==0) {
+          echo "<div style='clear:both;'></div>";
+        }
+    }
+} else{
     echo "0 resultados";
 }
+?>
+</div>
+  <div class="column right">
+    <h2>Top Ventas</h2>
+    <?php
+// 1. Conexión con la base de datos.
+//include '../services/connection.php';
+
+// 2. Selección y muestra de datos de la base de datos.
+$result = mysqli_query($conn, "SELECT Books.Title FROM Books WHERE Top = '1'");
+
+if(!empty($result)&& mysqli_num_rows($result) > 0) {
+    //datos de salida de cada fila (fila = row)
+    while ($row = mysqli_fetch_array($result)) {
+    echo "<p>".$row['Title']."</p>";
+    }
+} else{
+    echo "0 resultados";
+}
+?>
+<!--
+    <p>Cien años de soledad.</p>
+    <p>Cronica de una muerte anunciada.</p>
+    <p>El otoño del patriarca.</p>
+    <p>El general en su laberinto.</p>
+-->
+  </div>
+</div>
+  
+</body>
+</html>

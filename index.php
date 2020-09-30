@@ -21,9 +21,9 @@
    
   <div class="column left">
  	<div class="topnav">
-  		<a href="index.html">Re-Read</a>
-  		<a href="view/libros.html">Libros</a>
-  		<a href="view/ebooks.html">eBooks</a>
+  		<a href="index.php">Re-Read</a>
+  		<a href="view/libros.php">Libros</a>
+  		<a href="view/ebooks.php">eBooks</a>
 	</div>
     <h2>Nunca la lectura ha sido tan necesaria</h2>
     <p>En esto tiempos difíciles Re-Read se suma al mensaje de #yomequedoencasa por el bien común de la sociedad.</p>
@@ -32,14 +32,25 @@
   </div>
   
   <div class="column right">
-    <h2>Top ventas</h2>
-    <p>Cien años de soledad</p>
-    <p>Crónica de una muerte anunciada</p>
-    <p>El otoño del patriarca</p>
-    <p>El general en su laberinto</p>
-  
+    <h2>Top Ventas</h2>
+    <?php
+    // 1. Conexión con la base de datos.
+    include './services/connection.php';
+
+    // 2. Selección y muestra de datos de la base de datos.
+    $result = mysqli_query($conn, "SELECT Books.Title FROM Books WHERE Top = '1'");
+
+    if(!empty($result)&& mysqli_num_rows($result) > 0) {
+        //datos de salida de cada fila (fila = row)
+        while ($row = mysqli_fetch_array($result)) {
+        echo "<p>".$row['Title']."</p>";
+        }
+    } else{
+        echo "0 resultados";
+    }
+    ?>
   </div>
 </div>
   
 </body>
-</html> 
+</html>
