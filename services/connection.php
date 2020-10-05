@@ -2,9 +2,9 @@
 // ESTILO POR PROCEDIMIENTOS
 
 $host = "localhost";
-$user = "root";
-$pass = "";
-$db = "reread";
+$user = "Oriol";
+$pass = "1234";
+$db = "re-read.php";
 
 // Crear la conexión
 $conn = mysqli_connect($host, $user, $pass, $db);

@@ -59,7 +59,8 @@
         FROM Books INNER JOIN BooksAuthors ON Id=BooksAuthors.BookId
         INNER JOIN Authors ON Authors.Id = BooksAuthors.AuthorId
         WHERE Authors.Name LIKE '%{$_POST['fautor']}%'
-        AND Authors.Country LIKE '{$_POST['country']}'";
+        AND Authors.Country LIKE '{$_POST['country']}'"
+        ;
         $result = mysqli_query($conn, $query);
       }else {
         //mostrará todos los ebooks de la DB 
