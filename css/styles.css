@@ -1,0 +1,217 @@
+/*Recordemos algunos términos:
+    width - ancho
+    height - alto (altura)
+    padding - relleno
+    border - borde
+*/
+
+/*El selector universal (*) selecciona todos los elementos HTML en la página.*/
+* {
+  /*https://www.w3schools.com/css/css3_box-sizing.asp
+  CSS Box Sizing
+  Por defecto, el width y el height de un elemento se calcula 
+    sumando width + padding + border = width total
+    sumando height + padding + border = height total
+  La propiedad box-sizing nos permite incluir el relleno
+  y el borde en el ancho y alto total de un elemento.
+
+  Nos será útil para el diseño en columnas de la página web.
+  */
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+/*Quitamos el margin que viene por defecto en la etiqueta body*/
+body {
+  margin: 0;
+}
+
+/* Estilo del <div> del logo */
+.logo {
+  background-color: #0B5345;
+  color: white;
+  padding: 5px;
+  font-size: 10px;
+}
+
+/* Estilo del encabezado */
+.header {
+  padding: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+/*Estilo del título <h1> del encabezado 
+  ¿Cómo seleccionamos únicamente el h1 de dentro del header?
+  En la hoja de CSS ponemos:
+  .header h1{ ...estilos... }
+  Con esto indicamos lo siguiente:
+  A todo aquel elemento que tenga la clase header y tenga un 
+  descendiente <h1> asignale los siguientes estilos.
+*/
+.header h1{
+  font-size: 80px;
+}
+
+/*Estilo del párrafo <p> del encabezado 
+  Igual que antes: A todo aquel elemento que tenga la clase header y 
+  tenga un descendiente <p> asignale los siguientes estilos. */
+.header p{
+  padding: 0 20%;
+}
+
+/*Estilos del menú de navegación
+  https://www.w3schools.com/css/css_overflow.asp
+  CSS Overflow
+  La propiedad overflow especifica si se debe recortar el contenido o agregar barras de desplazamiento cuando el contenido de un elemento es demasiado grande para caber en el área especificada.
+*/
+.topnav {
+  overflow: hidden;
+  border-bottom: 2px solid #D35400;
+
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #D35400;
+  color: white;
+}
+
+.topnav a.active {
+  background-color: #D35400;
+  color: white;
+}
+
+
+/*https://www.w3schools.com/css/css_website_layout.asp
+  Diseño en columnas del sitio web.
+
+*/
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+.textpage {
+    margin:auto;
+    width:80%;
+}
+/*right column */
+.column.side {
+  width: 33.3%;
+}
+
+/* right column - parrafs*/
+.column.side p {
+  padding: 20px;
+  background-color: #117A65;
+  color: white;
+}
+
+/* left column */
+.column.middle {
+  width: 66.6%;
+  font-size: 15px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*Gallery*/
+.gallery {
+  padding: 20px;
+  float: left;
+  width: 33.3%;
+}
+
+.gallery img, .inlineImg img {
+  width: 100%;
+}
+
+div.desc {
+  padding: 5px;
+  font-size: 10px;
+  text-align: center;
+}
+
+div.gallery:hover{
+  background-color: #D35400;
+  color: white;
+}
+
+/*alineación*/
+.inlineImg {
+  padding: 20px;
+  float: left;
+  width: 33.3%;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+
+  .topnav a{
+    float: none;
+  }
+  
+  .gallery {
+    float: none;
+    margin: auto;
+    width: 80%;
+  }
+}
+/*
+@media screen and (min-width: 600px) {
+  .gallery {
+    height: 24vw;
+  }
+}
+*/
+
+/*Estilo del formulario*/
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
